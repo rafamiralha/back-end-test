@@ -1,0 +1,22 @@
+### list Books
+GET http://localhost:3000/books
+
+### GET Book
+GET http://localhost:3000/books/2
+
+### Create Book
+POST  http://localhost:3000/books/
+Content-Type: application/json
+
+{
+    "name":"livro num 1",
+    "description":"este é o livro 1",
+    "releaseDate": "1999-01-01",
+    "author":"jose"
+}
+
+### Update Book
+PATCH  http://localhost:3000/books/2
+
+### Delete Users
+DELETE  http://localhost:3000/books/4
