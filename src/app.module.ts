@@ -5,8 +5,7 @@ import { BooksModule } from './books/books.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
-import { APP_GUARD } from '@nestjs/core';
-import { AuthGuard } from './auth/auth.guard';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -26,15 +25,9 @@ import { AuthGuard } from './auth/auth.guard';
     }),
     BooksModule,
     AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
-  providers: [
-    AppService,
-    /// provendo o middleware para a aplicação toda
-    {
-      provide: APP_GUARD,
-      useClass: AuthGuard,
-    },
-  ],
+  providers: [AppService],
 })
 export class AppModule {}

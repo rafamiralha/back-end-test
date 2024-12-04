@@ -2,11 +2,16 @@ import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { BooksModule } from 'src/books/books.module';
-import { JwtModule } from '@nestjs/jwt';
 import { jwtconstants } from 'src/constants/constants';
-import { JwtStrategy } from './jwt.strategy';
+import { ConfigService } from '@nestjs/config';
+import { UsersService } from 'src/users/Users.service';
+import { User } from 'src/users/entities/user.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { JwtModule, JwtService } from '@nestjs/jwt';
+
 @Module({
   imports: [
+    TypeOrmModule.forFeature([User]),
     BooksModule,
     JwtModule.register({
       global: true,
@@ -14,7 +19,7 @@ import { JwtStrategy } from './jwt.strategy';
       signOptions: { expiresIn: '6000s' },
     }),
   ],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, ConfigService, UsersService, JwtService],
   controllers: [AuthController],
 })
 export class AuthModule {}

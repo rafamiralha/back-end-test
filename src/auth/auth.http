@@ -1,0 +1,21 @@
+### list auth/login
+GET http://localhost:3000/auth/login
+
+### GET Book
+GET http://localhost:3000/auth/login/1
+
+### Create Book
+POST  http://localhost:3000/auth/login/
+Content-Type: application/json
+
+{
+    "email":"rafael@abc.com",
+    "password": "123456"
+
+}
+
+### Update Book
+PATCH  http://localhost:3000/auth/login/2
+
+### Delete auth/login
+DELETE  http://localhost:3000/auth/login/4

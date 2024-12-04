@@ -1,0 +1,22 @@
+### list users
+GET http://localhost:3000/users
+
+### GET Book
+GET http://localhost:3000/users/1
+
+### Create Book
+POST  http://localhost:3000/users/
+Content-Type: application/json
+
+{
+    "username":"rafael miralha",
+    "email":"rafael@abc.com",
+    "password": "123456"
+
+}
+
+### Update Book
+PATCH  http://localhost:3000/users/2
+
+### Delete Users
+DELETE  http://localhost:3000/users/4
