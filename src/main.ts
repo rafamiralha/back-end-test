@@ -10,6 +10,11 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
+  app.enableCors({
+    origin: 'http://localhost:4200', // Permitir apenas o domínio do Angular
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Métodos permitidos
+    allowedHeaders: 'Content-Type, Authorization', // Cabeçalhos permitidos
+  });
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
