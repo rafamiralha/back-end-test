@@ -30,14 +30,14 @@ export class BooksController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
-    const book = await this.booksService.findOne({ id: +id });
+  async findOne(@Param('id') id: number) {
+    const book = await this.booksService.findOne(id);
     if (!book) throw new NotFoundException();
     return book;
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() updateBookDto: UpdateBookDto) {
+  async update(@Param('id') id: number, @Body() updateBookDto: UpdateBookDto) {
     const book = await this.booksService.update(+id, updateBookDto);
     if (!book) throw new NotFoundException();
     return book;
@@ -45,7 +45,7 @@ export class BooksController {
 
   @Delete(':id')
   @HttpCode(204)
-  async remove(@Param('id') id: string) {
+  async remove(@Param('id') id: number) {
     const book = await this.booksService.remove(+id);
     if (!book) throw new NotFoundException();
     return book;

@@ -20,11 +20,11 @@ export class BooksService {
     return this.bookRepository.find();
   }
 
-  findOne(id) {
+  findOne(id: number) {
     return this.bookRepository.findOne({ where: { id } });
   }
 
-  async update(id, dto: UpdateBookDto) {
+  async update(id: number, dto: UpdateBookDto) {
     const book = await this.bookRepository.findOne({ where: { id } });
     if (!book) return null;
     this.bookRepository.merge(book, dto);

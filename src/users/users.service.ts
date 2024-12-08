@@ -20,7 +20,7 @@ export class UsersService {
     return this.UserRepository.find();
   }
 
-  findOne(id) {
+  findOne(id: number) {
     return this.UserRepository.findOne({ where: { id } });
   }
 
@@ -31,14 +31,14 @@ export class UsersService {
     return this.UserRepository.findOneByOrFail(email);
   }
 
-  async update(id, dto: UpdateUserDto) {
+  async update(id: number, dto: UpdateUserDto) {
     const User = await this.UserRepository.findOne({ where: { id } });
     if (!User) return null;
     this.UserRepository.merge(User, dto);
     return this.UserRepository.save(User);
   }
 
-  async remove(id) {
+  async remove(id: number) {
     const User = await this.UserRepository.findOne({ where: { id } });
     if (!User) return null;
     return this.UserRepository.remove(User);
